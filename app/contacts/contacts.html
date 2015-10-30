@@ -1,0 +1,114 @@
+<div ng-controller="ContactsCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add User</h3>
+        </div>
+        <div class="modal-body">
+            <form name="userForm" ng-submit="addFormSubmit(userForm.$valid)" novalidate >
+				<!-- Add Form -->
+				<div class="row">
+					<div class="col-lg-6" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+					  <label>Name:
+						<input type="text" ng-model="name" placeholder="Contact Name"  required />
+					  </label>
+					  <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+					</div>
+					<div class="col-lg-6">
+					  <label>Email:
+						<input type="email" ng-model="email" placeholder="Contact Email" required />
+					  </label>
+					</div>
+				 </div>
+				 <br>
+				 <div class="row">
+					<div class="col-lg-6">
+					  <label>Company:
+						<input type="text" ng-model="company" placeholder="Company Name"  required/>
+					  </label>
+					</div>
+					<div class="col-lg-6">
+					  <label>Work Phone:
+						<input type="text" ng-model="work_phone" placeholder="Work Phone" />
+					  </label>
+					</div>
+				 </div>
+				 <br>
+				 <div class="row">
+					<div class="col-lg-6">
+					  <label>Mobile Phone:
+						<input type="text" ng-model="mobile_phone" placeholder="Mobile Phone" />
+					  </label>
+					</div>
+					<div class="col-lg-6">
+					  <label>Home Phone:
+						<input type="text" ng-model="home_phone" placeholder="Home Phone" />
+					  </label>
+					</div>
+				 </div>
+				 <br>
+				 <div class="row">
+					<div class="col-lg-6">
+					  <label>Street Address:
+						<input type="text" ng-model="street_address" placeholder="Street Address" />
+					  </label>
+					</div>
+					<div class="col-lg-6">
+					  <label>City:
+						<input type="text" ng-model="city" placeholder="City" />
+					  </label>
+					</div>
+				 </div>
+				 <br>
+				 <div class="row">
+					<div class="col-lg-6">
+					  <label>State:
+						<input type="text" ng-model="state" placeholder="State" />
+					  </label>
+					</div>
+					<div class="col-lg-6">
+					  <label>Zip Code:
+						<input type="text" ng-model="zipcode" placeholder="Zip Code" />
+					  </label>
+					</div>
+				 </div>
+		 
+			</form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()" type="submit"  ng-disabled="userForm.$invalid">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()" >Cancel</button>
+        </div>
+    </script>
+
+
+	<div class="col-md-12">
+		<h1>
+			<span>Your Contacts ({{contacts.length}})</span>
+			<button class="btn btn-primary btn-lg pull-right " data-toggle="modal" data-target="#myModal" ng-click="showForm()">+</button>
+		</h1>
+
+		<table class="table table-bordered">
+			<thead>
+			  <tr>
+				<th>Name</th>
+				<th>Company</th>
+				<th>Email</th>
+				<th class="col-md-4" width="25%;">Action</th>
+			  </tr>
+			</thead>
+			<tbody>
+				  <tr ng-repeat="contact in contacts">
+					<td>{{contact.name}}</td>
+					<td>{{contact.company}}</td>
+					<td>{{contact.email}}</td>
+					<td>
+					<a href="#/" class="btn btn-primary" >Edit</a>
+					<a href="#/" class="btn btn-danger" >Delete</a></td>
+				  </tr>
+			</tbody>
+		</table>
+	</div>
+ </div>
+  
+
+
